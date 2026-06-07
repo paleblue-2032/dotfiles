@@ -14,8 +14,8 @@
     ];
 
   # Bootloader.
- boot.loader.systemd-boot.enable = false;
- #boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = false;
+  #boot.loader.efi.canTouchEfiVariables = true;
   
   # UEFI環境でのGRUBの有効化
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,7 +30,7 @@
 
   boot.loader.timeout = 10;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ThinkPadE14-NixOS"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -202,7 +202,7 @@
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
           name = "Instant Shutdown";
-          command = "systemctl poweroff";
+          command = "gnome-session-quit --power-off";
           binding = "<Ctrl><Alt>End";
         };
       };
