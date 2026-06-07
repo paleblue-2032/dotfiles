@@ -30,7 +30,7 @@
 
   boot.loader.timeout = 10;
 
-  networking.hostName = "ThinkPadE14-NixOS"; # Define your hostname.
+  networking.hostName = "ThinkPadE14-Gen4"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
