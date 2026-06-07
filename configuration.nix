@@ -191,5 +191,22 @@
   };
 
 
+  programs.dconf.enable = true;
+
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          name = "Instant Shutdown";
+          command = "systemctl poweroff";
+          binding = "<Ctrl><Alt>End";
+        };
+      };
+    }
+  ];
 
 }
