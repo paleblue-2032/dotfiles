@@ -130,6 +130,7 @@
     gcc
     git
     github-cli
+    vim
   
     (python3.withPackages (ps: with ps; [
       numpy
