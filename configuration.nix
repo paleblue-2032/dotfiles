@@ -23,6 +23,8 @@
     enable = true;
     device = "nodev"; # UEFI（ESP）環境では "nodev" を指定します
     efiSupport = true;
+
+    splashImage = "/home/paleblue_2032/Pictures/NixOS-ThinkPad_blue.png";
   
     # 他のOS（Windows）を自動で探してメニューに追加する
     useOSProber = true;
@@ -131,6 +133,7 @@
     git
     github-cli
     vim
+    fastfetch
   
     (python3.withPackages (ps: with ps; [
       numpy
