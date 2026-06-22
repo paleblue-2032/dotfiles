@@ -34,6 +34,13 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # swap
+  swapDevices = [
+    {
+      device = "/swapfile";
+    }
+  ];
+
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
