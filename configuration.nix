@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ];
+  imports = [
+    ./modules/boot.nix
+   ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = false;
