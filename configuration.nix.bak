@@ -1,11 +1,19 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      <nixos-hardware/lenovo/thinkpad>
+      <nixos-hardware/common/cpu/amd>
+      <nixos-hardware/common/gpu/amd>
+    ];
 
-  # Bootloader
+  # Bootloader.
   boot.loader.systemd-boot.enable = false;
 
+  
+  # grub
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
@@ -13,24 +21,31 @@
     efiSupport = true;
 
     splashImage = "/home/paleblue_2032/Pictures/Nixos-ThinkPad_blue.png";
-
+  
     useOSProber = true;
   };
 
   boot.loader.timeout = 10;
 
   networking.hostName = "Liberty-pad";
+
+
+  # Enable networking
   networking.networkmanager.enable = true;
 
+  # swap
   swapDevices = [
     {
       device = "/swapfile";
     }
   ];
 
-  time.timeZone = "Asia/Tokyo";
-  time.hardwareClockInLocalTime = true;
 
+  # Set your time zone.
+  time.timeZone = "Asia/Tokyo";
+
+
+  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -48,72 +63,115 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-
     fcitx5.addons = with pkgs; [
       fcitx5-mozc
       fcitx5-gtk
       qt6Packages.fcitx5-configtool
     ];
-
-    fcitx5.waylandFrontend = true;
+    fcitx5.waylandFrontend = true; 
   };
 
+
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+
+  # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+
+  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "jp";
+    variant = "";
     options = "ctrl:swapcaps";
   };
 
-  console.useXkbConfig = true;
+  console.useXkbConfig = true; 
 
+
+  # Enable CUPS to print documents.
   services.printing.enable = true;
 
+
+  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
-
-  services.openssh.enable = true;
-
   security.rtkit.enable = true;
-
   services.pipewire = {
     enable = true;
-    pulse.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-
-    wireplumber.enable = true;
+    pulse.enable = true;
   };
 
-  users.users.paleblue_2032 = {
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users."paleblue_2032" = {
     isNormalUser = true;
     description = "paleblue_2032";
-
-    extraGroups = [
-      "wheel"
-      "networkmanager"
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+    #  thunderbird
     ];
   };
 
+  # Install firefox.
   programs.firefox.enable = true;
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    emacs
+    gcc
+    git
+    github-cli
+    vim
+    fastfetch
+  
+    (python3.withPackages (ps: with ps; [
+      numpy
+      websockets
+      opencv4
+      jupyterlab
+      
+    ]))
+  ];
+  
+
+  system.stateVersion = "26.05"; # Did you read the comment?
+
+
+  nix = {
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+     };
+   };
+
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji 
+  ];
+
+
+  time.hardwareClockInLocalTime = true;
+  
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true;
+    remotePlay.openFirewall = true; 
     dedicatedServer.openFirewall = true;
   };
 
-  programs.git.enable = true;
-  programs.zsh.enable = true;
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.nix-ld.enable = true;
 
   programs.dconf.enable = true;
 
@@ -121,9 +179,7 @@
     {
       settings = {
         "org/gnome/settings-daemon/plugins/media-keys" = {
-          custom-keybindings = [
-            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-          ];
+          custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
         };
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -135,33 +191,4 @@
     }
   ];
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
-  ];
-
-  environment.systemPackages = with pkgs; [
-    emacs
-    gcc
-    git
-    github-cli
-    vim
-    fastfetch
-
-    python3
-    uv
-
-    nh
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  system.stateVersion = "26.05";
 }
