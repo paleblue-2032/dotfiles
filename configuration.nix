@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/boot.nix
+    ./modules/networking.nix
    ];
 
   # Bootloader
