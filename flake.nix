@@ -7,7 +7,7 @@
 
   outputs = { self, nixpkgs, ... }:
   {
-    nixosConfigurations.nixos =
+    nixosConfigurations."Liberty-pad" =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
