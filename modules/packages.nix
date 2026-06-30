@@ -10,9 +10,6 @@
     fastfetch
 
     python3
-    uv
-
-    nh
   ];
 
   nixpkgs.config.allowUnfree = true;

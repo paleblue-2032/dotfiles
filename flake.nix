@@ -1,8 +1,6 @@
 {
   description = "Liberty-pad NixOS Configuration";
 
-
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
@@ -17,16 +15,7 @@
     };
   };
 
-
-
-  outputs = inputs@{
-    self,
-    nixpkgs,
-    nixos-hardware,
-    home-manager,
-    ...
-  }:
-
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, ... }:
   let
     system = "x86_64-linux";
     hostname = "Liberty-pad";
@@ -34,7 +23,6 @@
   {
     nixosConfigurations.${hostname} =
       nixpkgs.lib.nixosSystem {
-
         inherit system;
 
         specialArgs = {
@@ -44,7 +32,6 @@
         modules = [
 
           ./hardware-configuration.nix
-
           ./configuration.nix
 
           nixos-hardware.nixosModules.common-cpu-amd
@@ -53,18 +40,13 @@
           home-manager.nixosModules.home-manager
 
           {
-
             home-manager.useGlobalPkgs = true;
-
             home-manager.useUserPackages = true;
 
-            home-manager.users.paleblue_2032 =
-              import ./home.nix;
-
+            home-manager.users.paleblue_2032 = import ./home.nix;
           }
 
         ];
-
       };
   };
 }
