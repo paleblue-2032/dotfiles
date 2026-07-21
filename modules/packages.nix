@@ -8,6 +8,7 @@
     github-cli
     vim
     fastfetch
+    go
 
     python3
   ];

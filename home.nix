@@ -1,4 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+
+let
+  dpgk = pkgs.buildGoModule {
+    pname = "dpgk";
+    version = "0.1.3";
+
+    src = inputs.dpgk;
+
+    vendorHash = "sha256-XFA6L37L4iMS+3+iNkHGhP56SJ29WQW3D7fFWm3hUAg=";
+
+    subPackages = [ "." ];
+
+    ldflags = [
+      "-s"
+      "-w"
+    ];
+  };
+in
 
 {
   home.username = "paleblue_2032";
@@ -19,6 +37,9 @@
     zip
 
     wl-clipboard
+    
+    inputs.momoi-say.packages.${pkgs.system}.momoisay
+    dpgk
   ];
 
   home.sessionVariables = {
@@ -39,8 +60,10 @@
   programs.git = {
     enable = true;
     
-    userName = "paleblue-2032";
-    userEmail = "renshin0011_2112@icloud.com";
+    settings.user = {
+      userName = "paleblue-2032";
+      userEmail = "renshin0011_2112@icloud.com";
+    };
   };
 
   programs.vscode = {
