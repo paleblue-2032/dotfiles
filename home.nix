@@ -37,14 +37,9 @@ in
     zip
 
     wl-clipboard
-    
-    # Niri
+
     alacritty
     fuzzel
-    waybar
-    mako
-    swaylock
-    swayidle
     xwayland-satellite
     
     inputs.momoi-say.packages.${pkgs.system}.momoisay
@@ -91,6 +86,14 @@ in
   xdg.configFile."niri/config.kdl".source =
     ./modules/niri/config.kdl;
 
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
+
+  programs.noctalia = {
+    enable = true;
+    systemd.enable = true;
+  };
 
 
 }
