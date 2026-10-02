@@ -37,10 +37,6 @@ in
     zip
 
     wl-clipboard
-
-    alacritty
-    fuzzel
-    xwayland-satellite
     
     inputs.momoi-say.packages.${pkgs.system}.momoisay
     dpgk
@@ -81,18 +77,6 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-  };
-  
-  xdg.configFile."niri/config.kdl".source =
-    ./modules/niri/config.kdl;
-
-  imports = [
-    inputs.noctalia.homeModules.default
-  ];
-
-  programs.noctalia = {
-    enable = true;
-    systemd.enable = true;
   };
 
 

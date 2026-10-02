@@ -19,9 +19,7 @@
     dpgk = {
       url = "github:shibadogcap/dpgk/v0.1.3";
       flake = false;
-    };
-
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
+};
     
   };
 
