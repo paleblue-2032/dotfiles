@@ -38,6 +38,15 @@ in
 
     wl-clipboard
     
+    # Niri
+    alacritty
+    fuzzel
+    waybar
+    mako
+    swaylock
+    swayidle
+    xwayland-satellite
+    
     inputs.momoi-say.packages.${pkgs.system}.momoisay
     dpgk
   ];
@@ -78,6 +87,10 @@ in
     enable = true;
     nix-direnv.enable = true;
   };
+  
+  xdg.configFile."niri/config.kdl".source =
+    ./modules/niri/config.kdl;
+
 
 
 }
