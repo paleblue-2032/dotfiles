@@ -11,6 +11,7 @@
     ./modules/packages.nix
     ./modules/programs.nix
     ./modules/fonts.nix
+    ./modules/nixpkgs.nix
   ];
 
   nix.settings.experimental-features = [
