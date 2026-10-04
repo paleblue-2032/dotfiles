@@ -37,7 +37,7 @@
     
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, niri, noctalia, ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, niri,  ... }:
   let
     system = "x86_64-linux";
     hostname = "Liberty-pad";
@@ -66,11 +66,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            home-manager.sharedModules = [
-              niri.homeModules.niri
-              inputs.noctalia.homeModules.default
-            ];            
 
             home-manager.extraSpecialArgs = {
               inherit inputs;

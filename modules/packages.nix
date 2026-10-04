@@ -9,6 +9,7 @@
     vim
     fastfetch
     go
+    xwayland-satellite
 
     python3
   ];
