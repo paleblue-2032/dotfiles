@@ -16,7 +16,6 @@
 
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     
     momoi-say.url = "github:haruki-nikaidou/momoisay-rs";
