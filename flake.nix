@@ -23,11 +23,21 @@
     dpgk = {
       url = "github:shibadogcap/dpgk/v0.1.3";
       flake = false;
-};
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, niri, noctalia, ... }:
   let
     system = "x86_64-linux";
     hostname = "Liberty-pad";
@@ -49,12 +59,19 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-amd
 
+          niri.nixosModules.niri
+
           home-manager.nixosModules.home-manager
 
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            
+
+            home-manager.sharedModules = [
+              niri.homeModules.niri
+              inputs.noctalia.homeModules.default
+            ];            
+
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
