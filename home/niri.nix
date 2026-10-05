@@ -98,9 +98,6 @@
       "Mod+Shift+4" { move-column-to-workspace 4; }
       "Mod+Shift+5" { move-column-to-workspace 5; }
 
-      // 電源まわり
-      "Ctrl+Alt+End" { spawn "wleave"; }
-
       // ログアウト確認: niri標準ダイアログの代わりにnoctaliaのセッションメニュー
       "Ctrl+Alt+Delete" { spawn "noctalia" "msg" "panel-toggle" "session"; }
     }
