@@ -106,9 +106,9 @@ let
     theme.builtin = "Dracula";
 
     wallpaper = {
-      default.path = "/home/paleblue_2032/Pictures/VRChat_2026-10-02_22-13-01.748_3840x2160.png";
-      last.path = "/home/paleblue_2032/Pictures/VRChat_2026-10-02_22-13-01.748_3840x2160.png";
-      monitors."eDP-1".path = "/home/paleblue_2032/Pictures/VRChat_2026-10-02_22-13-01.748_3840x2160.png";
+      default.path = "/home/paleblue_2032/Pictures/VRChat_02.png";
+      last.path = "/home/paleblue_2032/Pictures/VRChat_02.png";
+      monitors."eDP-1".path = "/home/paleblue_2032/Pictures/VRChat_02.png";
     };
   };
 in
