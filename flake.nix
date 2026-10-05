@@ -34,10 +34,15 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, niri,  ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, niri, noctalia-greeter,  ... }:
   let
     system = "x86_64-linux";
     hostname = "Liberty-pad";
@@ -60,6 +65,8 @@
           nixos-hardware.nixosModules.common-gpu-amd
 
           niri.nixosModules.niri
+
+          inputs.noctalia-greeter.nixosModules.default
 
           home-manager.nixosModules.home-manager
 
