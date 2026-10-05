@@ -2,6 +2,11 @@
 
 {
   programs.niri.config = ''
+    // ログイン時のキーバインド一覧を表示しない
+    hotkey-overlay {
+      skip-at-startup
+    }
+
     // discord用
     xwayland-satellite {
       path "/run/current-system/sw/bin/xwayland-satellite"
@@ -95,7 +100,9 @@
 
       // 電源まわり
       "Ctrl+Alt+End" { spawn "wleave"; }
-      "Ctrl+Alt+Delete" { quit; }
+
+      // ログアウト確認: niri標準ダイアログの代わりにnoctaliaのセッションメニュー
+      "Ctrl+Alt+Delete" { spawn "noctalia" "msg" "panel-toggle" "session"; }
     }
 
     prefer-no-csd
