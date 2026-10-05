@@ -10,7 +10,7 @@
     device = "nodev";
     efiSupport = true;
 
-    splashImage = "/home/paleblue_2032/Pictures/Nixos-ThinkPad_blue.png";
+    splashImage = ./assets/boot-splash.png;
 
     useOSProber = true;
   };
