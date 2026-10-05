@@ -9,13 +9,7 @@
     dedicatedServer.openFirewall = true;
   };
 
-  programs.git.enable = true;
   programs.zsh.enable = true;
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
 
   programs.nix-ld.enable = true;
 

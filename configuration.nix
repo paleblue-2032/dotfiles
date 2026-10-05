@@ -19,9 +19,17 @@
     "flakes"
   ];
 
+  nix.settings.auto-optimise-store = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   # niri を有効化
   programs.niri.enable = true;
-  
+
   documentation.enable = false;
 
   system.stateVersion = "26.05";
