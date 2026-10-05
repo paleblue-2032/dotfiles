@@ -35,7 +35,6 @@ in
     wl-clipboard
 
     slurp
-    wleave
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
