@@ -18,7 +18,11 @@
       url = "github:numtide/llm-agents.nix";
     };
     
-    momoi-say.url = "github:haruki-nikaidou/momoisay-rs";
+    momoi-say = {
+      url = "github:haruki-nikaidou/momoisay-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     dpgk = {
       url = "github:shibadogcap/dpgk/v0.1.3";
