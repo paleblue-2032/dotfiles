@@ -4,6 +4,7 @@
   imports = [
     ./home/packages.nix
     ./home/programs.nix
+    ./home/zsh.nix
     ./home/conky.nix
     ./home/gnome.nix
     ./home/niri.nix
