@@ -10,7 +10,8 @@
     fastfetch
     go
     xwayland-satellite
-
+    cpufetch
+    
     python3
   ];
 

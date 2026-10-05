@@ -21,7 +21,7 @@
 
   # niri を有効化
   programs.niri.enable = true;
-
+  
   documentation.enable = false;
 
   system.stateVersion = "26.05";

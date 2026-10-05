@@ -63,6 +63,7 @@
 
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
 
           niri.nixosModules.niri
 

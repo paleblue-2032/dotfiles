@@ -41,6 +41,7 @@ in
     tree
     unzip
     zip
+    usbutils
 
     wl-clipboard
 
