@@ -76,8 +76,3 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 - boot: grub（EFI, `device = "nodev"`）+ OS prober、`/swapfile`。splash は `modules/assets/boot-splash.png`
 - Nix: `nix-settings.nix` で flakes・`auto-optimise-store = true`・`allowUnfree = true`
 - git user は `paleblue-2032` / `renshin0011_2112@icloud.com`。remote は `paleblue-2032/dotfiles`
-
-## 作業ディレクトリ
-
-- 設定ファイル関連の記述・調査・下書きは、`/home/paleblue_2032` 配下に作業ディレクトリを適宜作成して行ってよい。`/etc/nixos` の汚染を防ぐため、いったんここで作成し `sudo cp` で反映する運用が有効
-- **完全に作業が終わったら、作成した作業ディレクトリは確認の上削除する**
