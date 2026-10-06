@@ -7,5 +7,6 @@
     ./desktop/gnome.nix
     ./desktop/keyboard.nix
     ./desktop/input-method.nix
+    ./desktop/fingerprint.nix
   ];
 }
