@@ -25,8 +25,6 @@ in
     teams-for-linux
     conky
 
-    fastfetch
-
     tree
     unzip
     zip

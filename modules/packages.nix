@@ -9,7 +9,9 @@
     vim
     go
     xwayland-satellite
+    fastfetch
     cpufetch
+
     python3
   ];
 }

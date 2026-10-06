@@ -18,7 +18,7 @@
   home.stateVersion = "26.05";
 
   home.sessionVariables = {
-    EDITOR = "nano";
+    EDITOR = "emacs";
     BROWSER = "google-chrome-stable";
   };
 }
