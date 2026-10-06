@@ -24,18 +24,16 @@ in
     google-chrome
     teams-for-linux
     conky
-
     tree
     unzip
     zip
     usbutils
-
     wl-clipboard
-
     slurp
+    dpgk
+    vrcx
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
-    dpgk
   ];
 }
