@@ -33,6 +33,7 @@ in
     dpgk
     vrcx
     thunderbird
+    agent-browser
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
