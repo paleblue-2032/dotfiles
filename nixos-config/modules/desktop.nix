@@ -3,6 +3,7 @@
 {
   imports = [
     ./desktop/niri-session.nix
+    ./desktop/brightness.nix
     ./desktop/greeter.nix
     ./desktop/gnome.nix
     ./desktop/keyboard.nix

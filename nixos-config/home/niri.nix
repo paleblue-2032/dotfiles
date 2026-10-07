@@ -84,6 +84,14 @@
       "Print" { screenshot-screen; }
       "Mod+Shift+S" { screenshot; }
 
+      // 音量・画面輝度 (ThinkPad の Fn キー)
+      // niri は既定でメディアキーを処理しないため明示的にバインドする
+      "XF86AudioMute" { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+      "XF86AudioLowerVolume" { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+      "XF86AudioRaiseVolume" { spawn "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+      "XF86MonBrightnessDown" { spawn "brightnessctl" "set" "5%-"; }
+      "XF86MonBrightnessUp" { spawn "brightnessctl" "set" "5%+"; }
+
       // ワークスペースのフォーカス
       "Mod+1" { focus-workspace 1; }
       "Mod+2" { focus-workspace 2; }

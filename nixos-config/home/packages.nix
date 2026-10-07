@@ -30,6 +30,7 @@ in
     usbutils
     wl-clipboard
     slurp
+    brightnessctl
     dpgk
     vrcx
     thunderbird
