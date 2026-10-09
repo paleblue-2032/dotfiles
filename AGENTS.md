@@ -77,3 +77,10 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 - boot: grub（EFI, `device = "nodev"`）+ OS prober、`/swapfile`。splash は `modules/assets/boot-splash.png`
 - Nix: `nix-settings.nix` で flakes・`auto-optimise-store = true`・`allowUnfree = true`
 - git user は `paleblue-2032` / `renshin0011_2112@icloud.com`。remote は `paleblue-2032/dotfiles`
+
+## エージェント向け特権設定 (zz-agent.nix)
+
+- `modules/zz-agent.nix` を `configuration.nix` の import 一覧の末尾（`zz-` 接頭辞）で import。ローカルのエージェントがパスワードなしで特権操作を行えるようにするためのもの
+  - `security.sudo.extraRules` で `paleblue_2032` に `NOPASSWD` の `ALL` を付与（実質パスワードレス sudo）
+  - `services.udev.extraRules` で `ttyACM*` と `ATTRS{idVendor}=="0e8d"`（MediaTek）の USB を `MODE="0666"` に（一般ユーザーから読み書き可）
+- **罠**: セキュリティを大きく弱める設定（パスワードレス sudo）。元に戻すにはファイルと `configuration.nix` の import 行を削除する

@@ -12,6 +12,7 @@
     ./modules/packages.nix
     ./modules/programs.nix
     ./modules/fonts.nix
+    ./modules/zz-agent.nix
   ];
 
   documentation.enable = false;
