@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   services.xserver.enable = true;
@@ -11,6 +11,11 @@
   programs.dconf.profiles.user.databases = [
     {
       settings = {
+        "org/gnome/desktop/interface" = {
+          cursor-theme = "EkCursor";
+          cursor-size = lib.gvariant.mkInt32 32;
+        };
+
         "org/gnome/settings-daemon/plugins/media-keys" = {
           custom-keybindings = [
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"

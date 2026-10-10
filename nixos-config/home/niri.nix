@@ -26,6 +26,12 @@
       }
     }
 
+    // カーソルテーマ（エク_Cursor.zip の .ani を Xcursor に変換したもの）
+    cursor {
+      xcursor-theme "EkCursor"
+      xcursor-size 32
+    }
+
     spawn-at-startup "noctalia"
 
     // 透過, 角丸
