@@ -46,6 +46,14 @@
       gaps 8
     }
 
+    // 左上ホットコーナーでオーバービューになるのを無効化
+    // (niri 25.05 以降、既定で有効)
+    gestures {
+      hot-corners {
+        off
+      }
+    }
+
     binds {
       // Launcher
       "Mod+Space" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }

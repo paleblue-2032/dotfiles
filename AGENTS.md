@@ -35,6 +35,7 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 
 - WM は **Niri**（`programs.niri.enable`。設定は `home/niri.nix` に KDL を生文字列で記述）。バー・ランチャ等は **Noctalia**（`spawn-at-startup "noctalia"`）
   - **罠**: Niri は GNOME と違いメディアキー（音量・輝度）を既定で処理しない。`XF86AudioMute` / `XF86MonBrightnessUp` 等を `home/niri.nix` に明示バインドする必要がある。音量は `wpctl`。輝度は `brightnessctl`（`home/packages.nix`）＋ `services.udev.packages`（`modules/desktop/brightness.nix`）＋ ユーザーの `video` グループ登録（`modules/users.nix`）で `/sys/class/backlight` に書き込めるようにする。`video` 追加は再ログインまで反映されない
+  - **罠**: Niri 25.05 以降、マウスを左上ホットコーナーに持っていくと overview が既定で toggle される。無効化は `home/niri.nix` に `gestures { hot-corners { off } }` を追記（`Ctrl+Alt+Delete` 等のキーバインドは別途 `binds` 側）
 - ログインは **greetd + noctalia-greeter**（`services.displayManager.noctalia-greeter`）。GDM は無効。GNOME デスクトップ自体は有効（`modules/desktop/gnome.nix`、dconf でキーバインドも宣言）
 - キーボードは jp 配列 + `ctrl:swapcaps`（CapsLock ↔ Ctrl。`modules/desktop/keyboard.nix` と `home/niri.nix` の両方に指定）
 - terminal は **wezterm**（`home/wezterm.nix`、Dracula のみ。`~/.config/wezterm/wezterm.lua` を生成）。niri の `Mod+T` で起動
