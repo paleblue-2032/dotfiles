@@ -8,6 +8,10 @@
     github-cli
     vim
     go
+    rustc
+    cargo
+    rustfmt
+    clippy
     android-tools
     usbutils
     xwayland-satellite
