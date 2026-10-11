@@ -5,7 +5,7 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 
 ## 基本構成
 
-- Flake は `nixos-config/flake.nix`（git root は `/etc/nixos`、Nix 設定は `nixos-config/` 配下）
+- Flake は `nixos-config/flake.nix`（git root は `~/dotfiles`、Nix 設定は `nixos-config/` 配下）
 - ホスト名 `Liberty-pad`（ThinkPad E14 Gen4 AMD / AMD iGPU）。ユーザーは `paleblue_2032`（`wheel`, `networkmanager`）、shell は zsh
 - nixpkgs `nixos-26.05` / home-manager `release-26.05`、stateVersion `26.05`（system / home 両方）
 - inputs: `nixpkgs`, `nixos-hardware`, `home-manager`, `niri`(sodiboo), `noctalia`, `noctalia-greeter`, `nix-hazkey`, `llm-agents`(numtide), `momoi-say`, `dpgk`
@@ -19,8 +19,9 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 
 ## ビルド・再構築
 
-- flake が `nixos-config/` に移っているため、rebuild は **必ず flake を指定**する: `sudo nixos-rebuild switch --flake /etc/nixos/nixos-config#Liberty-pad`（`cd /etc/nixos/nixos-config` して `--flake .#Liberty-pad` でも可）
-- **罠**: 移動前の `sudo nixos-rebuild switch`（`--flake` 無し）は `/etc/nixos/flake.nix` を前提とするため動かない
+- rebuild は `sudo nixos-rebuild switch`（`--flake` 無し）で**そのまま実行できる**。`/etc/nixos/flake.nix` は `~/dotfiles/nixos-config/flake.nix` への symlink で、nixos-rebuild-ng は `/etc/nixos/flake.nix` が存在するとフレークモードを自動選択し、symlink を解決した親ディレクトリ（`~/dotfiles/nixos-config`）を flake として評価する。ホスト属性は実行ホスト名（`Liberty-pad`）から自動選択される
+- **罠**: `--flake` を明示したい場合は実体側を指す: `sudo nixos-rebuild switch --flake ~/dotfiles/nixos-config#Liberty-pad`（`cd ~/dotfiles/nixos-config` して `--flake .#Liberty-pad` でも可）
+- **罠**: `hardware-configuration.nix` の再生成は既定で `/etc/nixos`（= symlink だけの空ディレクトリ）に出るため `sudo nixos-generate-config --dir ~/dotfiles/nixos-config` を使う
 - 早めの構文チェックは `nix-instantiate --parse <file>.nix`（評価せずファイル単位の typo 検出に便利）
 - flake input の更新は `nixos-config/` 内で `nix flake update`。`flake.lock` はコミット済みなので明示指示なく更新しない
 - **罠**: `pkgs.system` を使うと `'system' has been renamed to/replaced by 'stdenv.hostPlatform.system'` 警告が出る（`home/packages.nix`・`home/noctalia.nix` で使用）。動作はする

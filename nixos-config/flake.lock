@@ -489,11 +489,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791712446,
-        "narHash": "sha256-j1HVA+wVDgF3AGbrju19H4pJneqeTZC7Nr77RtmRCw8=",
+        "lastModified": 1791713577,
+        "narHash": "sha256-x7MZNX9rmRXnenesMZ96EjEpn3EqBdq4YpTKMLqJDko=",
         "owner": "paleblue-2032",
         "repo": "yohaku",
-        "rev": "0050075856c63b8201f2ba847c17efb3234758e1",
+        "rev": "c6b8adb463715a9504b6200d7df8856b4d836dd5",
         "type": "github"
       },
       "original": {
