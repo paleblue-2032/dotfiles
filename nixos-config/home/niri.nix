@@ -41,6 +41,12 @@
       clip-to-geometry true
     }
 
+    // Yohaku(自作メモ帳)は文字を読むので不透明にする
+    window-rule {
+      match app-id="^yohaku$"
+      opacity 1.0
+    }
+
     // 隙間調整
     layout {
       gaps 8

@@ -4,6 +4,11 @@
   environment.systemPackages = with pkgs; [
     emacs
     gcc
+    # C++ / Qt (Yohaku) のビルド用
+    cmake
+    ninja
+    # GUI のキーボード操作テスト用 (niri/Wayland)
+    wtype
     git
     github-cli
     vim

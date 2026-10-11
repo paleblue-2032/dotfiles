@@ -48,6 +48,11 @@
       url = "github:aster-void/nix-hazkey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    yohaku = {
+      url = "github:paleblue-2032/yohaku";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 

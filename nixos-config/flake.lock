@@ -374,7 +374,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
-        "noctalia-greeter": "noctalia-greeter"
+        "noctalia-greeter": "noctalia-greeter",
+        "yohaku": "yohaku"
       }
     },
     "rust-overlay": {
@@ -478,6 +479,26 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
+        "type": "github"
+      }
+    },
+    "yohaku": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791712446,
+        "narHash": "sha256-j1HVA+wVDgF3AGbrju19H4pJneqeTZC7Nr77RtmRCw8=",
+        "owner": "paleblue-2032",
+        "repo": "yohaku",
+        "rev": "0050075856c63b8201f2ba847c17efb3234758e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "paleblue-2032",
+        "repo": "yohaku",
         "type": "github"
       }
     }
