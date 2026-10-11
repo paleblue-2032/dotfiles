@@ -34,6 +34,26 @@
         "type": "github"
       }
     },
+    "clpcat": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791723153,
+        "narHash": "sha256-Q6XLDz/0DajpiijhW2AbnzAXOFOpedVpQlumvmm9sic=",
+        "owner": "paleblue-2032",
+        "repo": "clappingcat_on_terminal",
+        "rev": "3e1758dd02005a49b9720789d7b1f3324137d681",
+        "type": "github"
+      },
+      "original": {
+        "owner": "paleblue-2032",
+        "repo": "clappingcat_on_terminal",
+        "type": "github"
+      }
+    },
     "dpgk": {
       "flake": false,
       "locked": {
@@ -365,6 +385,7 @@
     },
     "root": {
       "inputs": {
+        "clpcat": "clpcat",
         "dpgk": "dpgk",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
@@ -489,11 +510,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791720496,
-        "narHash": "sha256-ebMtSzi1tZbzv3x45tONUXJQRSiFUTmLvgTmQiFPfkU=",
+        "lastModified": 1791723612,
+        "narHash": "sha256-zWKvmkmhWxpp83OFa/HMaKdV50waiBRAartlMX3OkFo=",
         "owner": "paleblue-2032",
         "repo": "yohaku",
-        "rev": "cf6a13046c9f4b33359c4f436b0ac8c87d710ade",
+        "rev": "91da64c06fbb8f7dc356c3787da619913f00fbd8",
         "type": "github"
       },
       "original": {

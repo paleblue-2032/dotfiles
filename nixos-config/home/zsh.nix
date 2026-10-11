@@ -26,6 +26,15 @@
       # プロンプトを淡いピンクに
       prompt off
       PS1="%F{212}%n@%m:%~/ > %f"
+
+      # コマンドを打ち間違えたら猫が拍手して煽ってくる (CLPCAT_DISABLE=1 で無効化)
+      command_not_found_handler() {
+        print -u2 "zsh: command not found: $1"
+        if [[ -t 1 && -z "$CLPCAT_DISABLE" ]]; then
+          clpcat
+        fi
+        return 127
+      }
     '';
   };
 }

@@ -24,6 +24,11 @@
       inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    clpcat = {
+      url = "github:paleblue-2032/clappingcat_on_terminal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dpgk = {
       url = "github:shibadogcap/dpgk/v0.1.3";
       flake = false;

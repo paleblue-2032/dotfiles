@@ -37,6 +37,7 @@ in
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
+    inputs.clpcat.packages.${pkgs.system}.clpcat
     inputs.yohaku.packages.${pkgs.system}.yohaku
   ];
 }

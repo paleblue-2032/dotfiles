@@ -71,6 +71,8 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 
 - `home/packages.nix` の `dpgk` は `buildGoModule` で自家ビルド（`vendorHash` 固定）。`inputs.dpgk` やバージョンを上げたら **`vendorHash` の更新が必要**（`lib.fakeHash` を入れて build し、出た実ハッシュに置換）
 - `llm-agents`(command-code) / `momoi-say` / `dpgk` は外部 flake input 由来（自作ではない）
+- **clpcat**（タイポで黒猫が拍手して煽る自作CLI）は独立リポジトリ `paleblue-2032/clappingcat_on_terminal` を flake input `clpcat` として取り込み、`inputs.clpcat.packages.${pkgs.system}.clpcat` を `home/packages.nix` へ追記して導入。コマンドは `clpcat`（Rust / crossterm、動画から生成したモノクロASCIIアニメをバイナリに埋め込み。`tools/render.py` で作り直せる）
+- **罠**: clpcat のタイポ検知は `home/zsh.nix` の `initContent` の `command_not_found_handler` から呼ぶ。`CLPCAT_DISABLE=1` で無効化。再生中は `q`/`Esc`/`Ctrl-C` で閉じる。端末が狭い（目安 36x22 未満）と猫ではなく短いメッセージだけ出る
 - 追加パッケージは原則 `home/packages.nix`（ユーザー）か `modules/packages.nix`（system）に追記
 - **yohaku**（自作の栞付きメモ帳エディタ）は独立リポジトリ `paleblue-2032/yohaku` を flake input として取り込み、他パッケージ同様に `home/packages.nix` へ `inputs.yohaku.packages.${pkgs.system}.yohaku` を追記して導入。起動は `yohaku <file>`（単一インスタンス。起動中なら既存ウィンドウにタブ追加）
 - yohaku の `.desktop` / アイコンは **パッケージ側に同梱**（`share/applications/yohaku.desktop`）。プロファイルの share は XDG_DATA_DIRS に載るので、home.packages でも `nix profile install` でもランチャ・検索に表示される。dotfiles 側に `xdg.desktopEntries` は不要
