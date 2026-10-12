@@ -23,6 +23,7 @@ in
     discord
     google-chrome
     teams-for-linux
+    obs-studio
     conky
     tree
     unzip

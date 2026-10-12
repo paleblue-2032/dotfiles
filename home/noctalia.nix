@@ -20,6 +20,10 @@ let
       icon_color = "secondary";
       margin_ends = 0;
       radius = 0;
+      # バー背景の透過 (1.0 = 不透明, 0.0 = 完全透明)
+      background_opacity = 0.72;
+      # 対応コンポジタならバー背面をブラー (niri 非対応でも指定自体は無害)
+      compositor_blur = true;
     };
 
     control_center.hidden_tabs = [
