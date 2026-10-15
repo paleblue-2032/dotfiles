@@ -115,12 +115,13 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 - Nix: `nix-settings.nix` で flakes・`auto-optimise-store = true`・`allowUnfree = true`
 - git user は `paleblue-2032` / `renshin0011_2112@icloud.com`。remote は `paleblue-2032/dotfiles`
 
-## エージェント向け特権設定 (zz-agent.nix)
+## エージェント向け特権設定 (zz-agent.nix) — 削除済み
 
-- `modules/zz-agent.nix` を `configuration.nix` の import 一覧の末尾（`zz-` 接頭辞）で import。ローカルのエージェントがパスワードなしで特権操作を行えるようにするためのもの
+- 以前は `modules/zz-agent.nix` を `configuration.nix` の import 一覧の末尾（`zz-` 接頭辞）で import し、ローカルのエージェントがパスワードなしで特権操作を行えるようにしていた
   - `security.sudo.extraRules` で `paleblue_2032` に `NOPASSWD` の `ALL` を付与（実質パスワードレス sudo）
   - `services.udev.extraRules` で `ttyACM*` と `ATTRS{idVendor}=="0e8d"`（MediaTek）の USB を `MODE="0666"` に（一般ユーザーから読み書き可）
-- **罠**: セキュリティを大きく弱める設定（パスワードレス sudo）。元に戻すにはファイルと `configuration.nix` の import 行を削除する
+- **現在は削除済み**: `modules/zz-agent.nix` を削除し、`configuration.nix` の import 行も除去（未コミット）。復帰させるにはファイルと import 行を戻す
+- **罠**: セキュリティを大きく弱める設定（パスワードレス sudo）だったため削除。再有効化は非推奨
 - **名前**: プロジェクト/パッケージ/実行ファイル/アプリIDは `Yohaku`（`yohaku`）。リポジトリは github:paleblue-2032/yohaku
 - **ファイル選択**: Linux で xdg-desktop-portal があれば `QT_QPA_PLATFORMTHEME=xdgdesktopportal` を自動設定し、
   その環境の標準ファイルアプリ（Nautilus 等）のダイアログを使う。無ければ従来の Qt ダイアログ。Windows/macOS はネイティブ
