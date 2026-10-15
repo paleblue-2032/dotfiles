@@ -24,6 +24,7 @@
     fastfetch
     cpufetch
     python3
+    sl
     
   ];
 }
