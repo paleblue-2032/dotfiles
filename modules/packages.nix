@@ -4,10 +4,8 @@
   environment.systemPackages = with pkgs; [
     emacs
     gcc
-    # C++ / Qt (Yohaku) のビルド用
     cmake
-    ninja
-    # GUI のキーボード操作テスト用 (niri/Wayland)
+    ninja    
     wtype
     git
     github-cli
@@ -24,6 +22,8 @@
     fastfetch
     cpufetch
     python3
+    typst
+    poppler-utils
     sl
     
   ];
