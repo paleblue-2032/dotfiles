@@ -44,6 +44,9 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 - **Noctalia の declarative 設定**は `home/noctalia.nix` で Nix 属性セットを書き、`pkgs.formats.toml` で TOML 生成 → `xdg.stateFile."noctalia/settings.toml".source` として配置（読み取り専用）。パッケージは `inputs.noctalia.packages.${pkgs.system}.default`
   - **罠**: 設定アプリでのランタイム変更は state 側に書かれるが、宣言側 `.source` が優先で rebuild に上書きされる。変更は Nix 属性を編集して rebuild する（アプリで変えた値は次回 switch で消える）
   - **罠**: `config_version` を noctalia のバージョンに合わせる（不一致だと設定が無視・リセットされうる）。現在は 15
+- 既定アプリは `home/xdg.nix` の `xdg.mimeApps` で宣言（`~/.config/mimeapps.list` を生成、読み取り専用）。PDF は Papers（`org.gnome.Papers.desktop`）、ブラウザは Chrome、メールは Thunderbird。home-manager は `~/.local/share/applications/mimeapps.list` も管理する
+  - **罠**: アプリや GNOME 設定から既定を変えても rebuild で宣言値に戻る。変更は `home/xdg.nix` を編集する。新規ファイルは flake 評価のため `git add` が必要
+  - **罠**: 既存の `~/.config/mimeapps.list` や `~/.local/share/applications/mimeapps.list` が実行時生成の通常ファイルとして残っていると、home-manager の有効化が「would be clobbered」で失敗し、**system 世代は進むが HM 世代は更新されない**（`systemctl status home-manager-paleblue_2032` で確認）。`flake.nix` に `home-manager.backupFileExtension = "backup"` を設定済みなので既存ファイルは `.backup` に退避される
 - **Conky** は `home/conky.nix` が左上時計（`conky_left.conf`）と右下システム情報（`conky_right.conf`）の 2 枚を生成し、`~/.config/conky/start.sh`（3 秒待って両方起動）で立ち上げる
   - **罠**: autostart は `home/gnome.nix` が `~/.config/autostart/conky.desktop` を書く **GNOME セッション限定**。niri は XDG autostart を処理しないため conky は niri では起動しない（手動起動は可）
   - **罠**: Conky は X11（`own_window_type = 'desktop'`, `out_to_x`）。niri で使うには XWayland（`xwayland-satellite`）が要る

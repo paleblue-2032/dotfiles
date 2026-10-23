@@ -35,6 +35,7 @@ in
     vrcx
     thunderbird
     agent-browser
+    papers
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay

@@ -94,6 +94,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
+            # アプリが実行時に作るファイル（mimeapps.list 等）と衝突したとき、
+            # 既存ファイルを .backup に退避して有効化を継続する
+            home-manager.backupFileExtension = "backup";
+
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };

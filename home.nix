@@ -10,6 +10,7 @@
     ./home/niri.nix
     ./home/noctalia.nix
     ./home/wezterm.nix
+    ./home/xdg.nix
   ];
 
   home.username = "paleblue_2032";
