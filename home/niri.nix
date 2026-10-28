@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  # カーソルテーマ本体（niri / GNOME の dconf から参照）
+  xdg.dataFile."icons/Eku".source = ../modules/assets/Eku;
+
   programs.niri.config = ''
     // ログイン時のキーバインド一覧を表示しない
     hotkey-overlay {
@@ -26,9 +29,9 @@
       }
     }
 
-    // カーソルテーマ（エク_Cursor.zip の .ani を Xcursor に変換したもの）
+    // カーソルテーマ Eku（エク_Cursor.zip の .ani を Xcursor に変換したもの）
     cursor {
-      xcursor-theme "EkCursor"
+      xcursor-theme "Eku"
       xcursor-size 32
     }
 

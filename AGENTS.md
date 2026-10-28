@@ -38,6 +38,7 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
   - **罠**: Niri は GNOME と違いメディアキー（音量・輝度）を既定で処理しない。`XF86AudioMute` / `XF86MonBrightnessUp` 等を `home/niri.nix` に明示バインドする必要がある。音量は `wpctl`。輝度は `brightnessctl`（`home/packages.nix`）＋ `services.udev.packages`（`modules/desktop/brightness.nix`）＋ ユーザーの `video` グループ登録（`modules/users.nix`）で `/sys/class/backlight` に書き込めるようにする。`video` 追加は再ログインまで反映されない
   - **罠**: Niri 25.05 以降、マウスを左上ホットコーナーに持っていくと overview が既定で toggle される。無効化は `home/niri.nix` の `gestures { hot-corners { off } }`
   - **罠**: niri は `window-rule { blur }` 非対応（設定エラー）。すりガラス的な透過はできない。Noctalia 設定の `compositor_blur = true` は niri では効かないが指定自体は無害
+- カーソルテーマは **Eku**。本体は `modules/assets/Eku` に同梱し、`home/niri.nix` の `xdg.dataFile."icons/Eku"` で `~/.local/share/icons/Eku` に配置。GNOME 側は `modules/desktop/gnome.nix` の dconf で指定
 - ログインは **greetd + noctalia-greeter**（`services.displayManager.noctalia-greeter`）。GDM は無効。GNOME デスクトップ自体は有効（`modules/desktop/gnome.nix`、dconf でキーバインドも宣言）
 - キーボードは jp 配列 + `ctrl:swapcaps`（CapsLock ↔ Ctrl。`modules/desktop/keyboard.nix` と `home/niri.nix` の両方に指定）
 - terminal は **wezterm**（`home/wezterm.nix`、Dracula のみ。`~/.config/wezterm/wezterm.lua` を生成）。niri の `Mod+T` で起動
@@ -89,7 +90,7 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 ## その他
 
 - ロケール: 言語(メッセージ)は英語、地域設定（通貨・数値等）は日本（`modules/locale.nix`）。ただし `LC_TIME` は `en_US` なので日時表示も英語。タイムゾーン `Asia/Tokyo`、`hardwareClockInLocalTime = true`
-- boot: grub（EFI, `device = "nodev"`）+ OS prober、`boot.loader.timeout = 10`、`/swapfile`。systemd-boot は無効。splash は `modules/assets/boot-splash.png`
+- boot: grub（EFI, `device = "nodev"`）+ OS prober、`boot.loader.timeout = 10`、`/swapfile`（`modules/boot.nix` の `swapDevices` で `size = 8192` = 8 GiB を宣言し、初回起動時に自動作成）。systemd-boot は無効。splash は `modules/assets/boot-splash.png`
 - Nix: `nix-settings.nix` で flakes・`auto-optimise-store = true`・`allowUnfree = true`。`configuration.nix` で `documentation.enable = false`
 - git user は `paleblue-2032` / `renshin0011_2112@icloud.com`。remote は `paleblue-2032/dotfiles`
 - `.commandcode/`（taste / plans など）は `.gitignore` 済みで管理対象外

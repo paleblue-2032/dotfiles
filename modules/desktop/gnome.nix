@@ -12,7 +12,7 @@
     {
       settings = {
         "org/gnome/desktop/interface" = {
-          cursor-theme = "EkCursor";
+          cursor-theme = "Eku";
           cursor-size = lib.gvariant.mkInt32 32;
         };
 
