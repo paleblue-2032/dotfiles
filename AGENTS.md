@@ -57,8 +57,15 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 
 - `nix-hazkey` flake の `nixosModules.hazkey` を `modules/desktop/input-method.nix` で import し `services.hazkey.enable = true`（hazkey-server は systemd ユーザーサービス、fcitx5 アドオンと hazkey-settings は自動導入）
 - fcitx5 アドオンは `fcitx5-gtk` / `qt6Packages.fcitx5-configtool`。mozc はコメントアウトで無効化済み
+- **ユーザー設定は `home/ime.nix` で宣言的に管理**。`xdg.configFile` で以下を生成する（読み取り専用 symlink）
+  - `~/.config/fcitx5/profile`: `keyboard-jp` + `hazkey`、`DefaultIM=hazkey`、`Default Layout=jp`
+  - `~/.config/fcitx5/config`: `Control+space` / `Zenkaku_Hankaku` などの切替キー
+  - `~/.config/fcitx5/conf/hazkey.conf`: `LastVersion=0.2.1`、`showTabToSelect=True`
+- **罠**: home-manager 側の `i18n.inputMethod` は使わない。nix-hazkey は `i18n.inputMethod` と同じマネージャーを要求するため、NixOS 側の `services.hazkey` と HM 側の `i18n.inputMethod` を混在させると Hazkey アドオンが HM の fcitx5 パッケージに入らない。設定ファイルだけを `xdg.configFile` で置く
+- **罠**: 宣言ファイルは読み取り専用。`fcitx5-configtool` / `hazkey-settings` での実行時変更は次回 rebuild で戻る。変更は `home/ime.nix` を編集して `sudo nixos-rebuild switch`
+- **罠**: nix-hazkey のバージョンを上げたら `home/ime.nix` の `LastVersion` も合わせる（現在 0.2.1）
 - **罠**: `i18n.inputMethod` を変えた後、実行中 fcitx5 が旧世代だと新アドオン（Hazkey）が一覧に出ない。再ログインか `fcitx5 -rd` で再起動が必要。無効化した mozc は `~/.config/fcitx5/profile` からは自動で外れる
-- 有効化は `fcitx5-configtool` の「入力メソッド」タブ右側（利用可能な入力メソッド）から。設定は `hazkey-settings`
+- 移行時は `~/.config/fcitx5` と `~/.local/state/hazkey` をコピーしない。プロファイルは `home/ime.nix` から生成され、学習データは新環境で作り直す
 
 ## 指紋認証 (fprintd)
 

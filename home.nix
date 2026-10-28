@@ -7,6 +7,7 @@
     ./home/zsh.nix
     ./home/conky.nix
     ./home/gnome.nix
+    ./home/ime.nix
     ./home/niri.nix
     ./home/noctalia.nix
     ./home/wezterm.nix
