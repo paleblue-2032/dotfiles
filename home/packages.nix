@@ -1,6 +1,11 @@
 { pkgs, inputs, ... }:
 
 let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+    config = pkgs.config;
+  };
+
   dpgk = pkgs.buildGoModule {
     pname = "dpgk";
     version = "0.1.3";
@@ -36,7 +41,7 @@ in
     thunderbird
     agent-browser
     papers
-    lmstudio
+    pkgs-unstable.lmstudio
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
