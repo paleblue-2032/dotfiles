@@ -23,4 +23,7 @@
       size = 8192; # 8 GiB
     }
   ];
+
+  services.bootvine.enable = true;
+
 }

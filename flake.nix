@@ -58,6 +58,11 @@
       url = "github:paleblue-2032/yohaku";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    bootvine = {
+      url = "git+https://codeberg.org/wvhulle/bootvine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
@@ -79,6 +84,8 @@
 
           ./hardware-configuration.nix
           ./configuration.nix
+
+          inputs.bootvine.nixosModules.default
 
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-amd
