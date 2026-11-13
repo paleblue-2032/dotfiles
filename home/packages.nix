@@ -42,6 +42,7 @@ in
     agent-browser
     papers
     pkgs-unstable.lmstudio
+    leaf
 
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
