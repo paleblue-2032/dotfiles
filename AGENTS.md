@@ -84,6 +84,10 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
 - 追加パッケージは原則 `home/packages.nix`（ユーザー）か `modules/packages.nix`（system）に追記
 - `llm-agents`(command-code) / `momoi-say` / `dpgk` は外部 flake input 由来（自作ではない）
 - `dpgk` は `home/packages.nix` で `buildGoModule`（`vendorHash` 固定）。`inputs.dpgk` やバージョンを上げたら **`vendorHash` の更新が必要**（`lib.fakeHash` を入れて build し、出た実ハッシュに置換）
+- **leaf**（ターミナル向け Markdown ビュワー `RivoLink/leaf`）は nixpkgs 未収録。flake input `leaf`（`github:RivoLink/leaf/1.29.3`、`flake = false`）を `home/packages.nix` で `rustPlatform.buildRustPackage` して導入。コマンド名は `leaf`（`leaf [--watch] [--picker] [--inline] [file.md]`、`--inline` で TUI なしの stdout レンダリング）
+  - **罠**: nixpkgs の `leaf` は neofetch 風のシステム情報ツールで**別物**。`pkgs.leaf` を入れると Markdown ビュワーにはならない
+  - **罠**: `syntect` の `regex-onig` 用に `cmake` が nativeBuildInputs に必要（oniguruma を同梱ビルドする）
+  - **罠**: 同梱テストの一部（`diff_view_rebuild` / `render_preview`）はサンドボックスで失敗するため `doCheck = false` で無効化。バージョン更新は flake input のタグと derivation の `version` を揃える（`cargoLock.lockFile` は input 側の `Cargo.lock` を参照）
 - **clpcat**（タイポで黒猫が拍手して煽る自作CLI）は独立リポジトリ `paleblue-2032/clappingcat_on_terminal` を flake input `clpcat` として取り込み、`home/packages.nix` で導入。コマンドは `clpcat`（Rust / crossterm、動画から生成したモノクロASCIIアニメを埋め込み。`tools/render.py` で作り直せる）
 - **罠**: clpcat のタイポ検知は `home/zsh.nix` の `initContent` の `command_not_found_handler` から呼ぶ。`CLPCAT_DISABLE=1` で無効化。再生中は `q`/`Esc`/`Ctrl-C` で閉じる。端末が狭い（目安 36x22 未満）と猫ではなく短いメッセージだけ出る
 - **yohaku**（自作の栞付きメモ帳エディタ）は独立リポジトリ `paleblue-2032/yohaku` を flake input として取り込み、`home/packages.nix` へ `inputs.yohaku.packages.${pkgs.system}.yohaku` を追記して導入

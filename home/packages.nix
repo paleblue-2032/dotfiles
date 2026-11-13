@@ -21,6 +21,21 @@ let
       "-w"
     ];
   };
+
+  leaf = pkgs.rustPlatform.buildRustPackage {
+    pname = "leaf-markdown-viewer";
+    version = "1.29.3";
+
+    src = inputs.leaf;
+
+    cargoLock.lockFile = "${inputs.leaf}/Cargo.lock";
+
+    nativeBuildInputs = [ pkgs.cmake ];
+
+    doCheck = false;
+
+    meta.mainProgram = "leaf";
+  };
 in
 
 {
@@ -42,7 +57,8 @@ in
     agent-browser
     papers
     pkgs-unstable.lmstudio
-    
+    leaf
+
     inputs.llm-agents.packages.${pkgs.system}.command-code
     inputs.momoi-say.packages.${pkgs.system}.momoisay
     inputs.clpcat.packages.${pkgs.system}.clpcat

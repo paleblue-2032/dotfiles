@@ -36,6 +36,11 @@
       flake = false;
     };
 
+    leaf = {
+      url = "github:RivoLink/leaf/1.29.3";
+      flake = false;
+    };
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";

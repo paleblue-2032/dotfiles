@@ -189,6 +189,23 @@
         "type": "github"
       }
     },
+    "leaf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794517399,
+        "narHash": "sha256-/gV1jzY5fo0DzCCTD8MKb9U0CCUpSC1EsnmTKjJGZAE=",
+        "owner": "RivoLink",
+        "repo": "leaf",
+        "rev": "fe7b43f06dc1f0363f23cf376acde5392affc21a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RivoLink",
+        "ref": "1.29.3",
+        "repo": "leaf",
+        "type": "github"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "bun2nix": "bun2nix",
@@ -442,6 +459,7 @@
         "clpcat": "clpcat",
         "dpgk": "dpgk",
         "home-manager": "home-manager",
+        "leaf": "leaf",
         "llm-agents": "llm-agents",
         "momoi-say": "momoi-say",
         "niri": "niri",
