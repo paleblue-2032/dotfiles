@@ -76,6 +76,26 @@
         "type": "github"
       }
     },
+    "commandcode-gui-app": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794647393,
+        "narHash": "sha256-smGgXG8AQ8tEAIda7epEaetLdgPmVa9JnkMydEyKZas=",
+        "owner": "paleblue-2032",
+        "repo": "commandcode-gui-app",
+        "rev": "b18ed1b0cedb363384a8c473af348a7288ef7b37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "paleblue-2032",
+        "repo": "commandcode-gui-app",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1790899423,
@@ -457,6 +477,7 @@
       "inputs": {
         "bootvine": "bootvine",
         "clpcat": "clpcat",
+        "commandcode-gui-app": "commandcode-gui-app",
         "dpgk": "dpgk",
         "home-manager": "home-manager",
         "leaf": "leaf",

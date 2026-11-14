@@ -6,6 +6,7 @@
     gcc
     cmake
     ninja    
+    pkg-config
     wtype
     git
     github-cli

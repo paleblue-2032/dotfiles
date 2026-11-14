@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    commandcode-gui-app = {
+      url = "github:paleblue-2032/commandcode-gui-app";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dpgk = {
       url = "github:shibadogcap/dpgk/v0.1.3";
       flake = false;

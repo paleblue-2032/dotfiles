@@ -50,6 +50,12 @@
       opacity 1.0
     }
 
+    // Command Code GUI も文字を読むので不透明にする
+    window-rule {
+      match app-id="^Command Code GUI$"
+      opacity 1.0
+    }
+
     // 隙間調整
     layout {
       gaps 8
