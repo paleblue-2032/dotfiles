@@ -53,6 +53,15 @@ Liberty-pad（Lenovo ThinkPad E14 Gen4 AMD）の NixOS + home-manager dotfiles �
   - **罠**: Conky は X11（`own_window_type = 'desktop'`, `out_to_x`）。niri で使うには XWayland（`xwayland-satellite`）が要る
   - **罠**: Conky の `${...}` 変数は Nix の `''...''` 文字列内で `''${...}` とエスケープが必要
 
+## Floorp (ブラウザ)
+
+- `home/programs.nix` の `programs.floorp` で宣言する。`home/packages.nix` の `floorp-bin` は**併記しない**
+- **罠**: Floorp 本体はプロファイルを `~/.config/floorp` に作るが、home-manager の `programs.floorp` の既定 `configPath` は `.floorp`。`configPath = ".config/floorp"` を明示しないと別ディレクトリが作られ、既存プロファイルが置き去りになる。既存プロファイルは `profiles.default.path = "sh5s5mvr.default"` で引き継ぐ
+- **罠**: `configPath` を既定から変えるとラッパーに `MOZ_APP_DATA` が入り、`policies` を設定すると `policies.json` が入るため **derivation が変わる**。`home.packages` の `floorp-bin` と併記すると `buildEnv` が `bin/floorp` の衝突で失敗する（HM 世代が更新されない）
+- **罠**: `user.js` は毎起動で `prefs.js` を上書きする。GUI で変えた設定は rebuild / 再起動で宣言値に戻る
+- **罠**: `floorp.design.configs` / `floorp.workspaces.*` / `floorp.panelSidebar.*` は JSON 文字列を丸ごと置換する pref。Nix で部分指定するとキー欠落で機能が壊れるため触らず、GUI で設定する
+- 既定ブラウザは Chrome のまま（`home/xdg.nix` の `xdg.mimeApps` と `BROWSER`）。Floorp を既定にするなら両方の変更が要る
+
 ## IME (fcitx5 + hazkey)
 
 - `nix-hazkey` flake の `nixosModules.hazkey` を `modules/desktop/input-method.nix` で import し `services.hazkey.enable = true`（hazkey-server は systemd ユーザーサービス、fcitx5 アドオンと hazkey-settings は自動導入）
