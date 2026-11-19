@@ -56,6 +56,7 @@ in
     thunderbird
     agent-browser
     papers
+    kdePackages.gwenview
     pkgs-unstable.lmstudio
     leaf
 

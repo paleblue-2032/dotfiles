@@ -10,6 +10,20 @@
     defaultApplications = {
       "application/pdf" = "org.gnome.Papers.desktop";
 
+      # 画像の既定ビューアを Gwenview にする
+      "image/jpeg" = "org.kde.gwenview.desktop";
+      "image/png" = "org.kde.gwenview.desktop";
+      "image/gif" = "org.kde.gwenview.desktop";
+      "image/webp" = "org.kde.gwenview.desktop";
+      "image/bmp" = "org.kde.gwenview.desktop";
+      "image/tiff" = "org.kde.gwenview.desktop";
+      "image/avif" = "org.kde.gwenview.desktop";
+      "image/heic" = "org.kde.gwenview.desktop";
+      "image/heif" = "org.kde.gwenview.desktop";
+      "image/jxl" = "org.kde.gwenview.desktop";
+      "image/svg+xml" = "org.kde.gwenview.desktop";
+      "image/x-ico" = "org.kde.gwenview.desktop";
+
       "text/html" = "google-chrome.desktop";
       "x-scheme-handler/http" = "google-chrome.desktop";
       "x-scheme-handler/https" = "google-chrome.desktop";
